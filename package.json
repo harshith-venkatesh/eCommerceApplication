@@ -1,0 +1,23 @@
+{
+  "name": "ecommerceapplication",
+  "version": "1.0.0",
+  "description": "MERN Shopping Cart",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harshi7016/eCommerceApplication.git"
+  },
+  "author": "Harshith Venkatesh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Harshi7016/eCommerceApplication/issues"
+  },
+  "homepage": "https://github.com/Harshi7016/eCommerceApplication#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
