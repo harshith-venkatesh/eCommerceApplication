@@ -15,7 +15,7 @@ import { listProductDetails } from '../actions/productAction';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 const ProductScreen = ({ history, match }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -40,7 +40,7 @@ const ProductScreen = ({ history, match }) => {
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />
           </Col>
-          <Col md={3} style={{ wordWrap: 'break-word', padding: '5px 10px' }}>
+          <Col md={3} style={{ overflowWrap: 'anywhere' }}>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h3>{product.name} </h3>
