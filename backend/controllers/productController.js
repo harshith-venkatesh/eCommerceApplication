@@ -19,4 +19,4 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 });
 
-export { getProductById, getProductById };
+export { getProducts, getProductById };
