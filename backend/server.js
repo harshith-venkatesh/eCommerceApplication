@@ -6,12 +6,10 @@ import productRoute from './routes/productRoutes.js';
 import userRoutes from './routes/userRoute.js';
 import { notFound, errorHandler } from './middleware/errorMiddleWare.js';
 
-const app = express();
-
-app.use(express.json());
 dotenv.config();
 connectDB();
-
+const app = express();
+app.use(express.json());
 app.get('/', (req, res) => {
   res.send('API is running');
 });
