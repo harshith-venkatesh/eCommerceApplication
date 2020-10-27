@@ -26,8 +26,8 @@ const userSchema = mongoose.Schema(
       postalCode: { type: String, required: true },
       country: { type: String, required: true },
     },
-    paymentMethods: {
-      type: Boolean,
+    paymentMethod: {
+      type: String,
       required: true,
     },
     paymentResult: {
