@@ -144,9 +144,8 @@ const OrderScreen = ({ match }) => {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              <ListGroup.Item>
-                {error && <Message variant='danger'>{error}</Message>}
-              </ListGroup.Item>
+
+              {error && <Message variant='danger'>{error}</Message>}
             </ListGroup>
           </Card>
         </Col>

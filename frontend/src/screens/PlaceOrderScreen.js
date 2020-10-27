@@ -24,13 +24,13 @@ const PlaceOrderScreen = ({ history }) => {
   );
 
   const orderCreate = useSelector((state) => state.orderCreate);
-  console.table(orderCreate);
+
   const { order, success, error } = orderCreate;
 
   useEffect(() => {
     if (success) {
       // eslint-disable-next-line
-      console.table(order);
+
       if (order) {
         history.push(`/order/${order._id}`);
       }
