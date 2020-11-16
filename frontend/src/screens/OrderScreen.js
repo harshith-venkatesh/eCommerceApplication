@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 import React, { useEffect, useState } from 'react';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getOrderDetails, payOrderDetails } from '../actions/orderAction';
@@ -51,7 +51,7 @@ const OrderScreen = ({ match }) => {
     } else {
       setSdkReady(true);
     }
-  }, [orderId, order, dispatch, successPay]);
+  }, [orderId, order, sdkReady, dispatch, successPay]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
