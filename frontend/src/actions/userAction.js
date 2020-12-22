@@ -17,6 +17,7 @@ import {
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
+  USER_LIST_RESET,
 } from '../constants/userConstants';
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstant';
 
@@ -61,6 +62,9 @@ export const logout = () => (dispatch) => {
   });
   dispatch({
     type: ORDER_LIST_MY_RESET,
+  });
+  dispatch({
+    type: USER_LIST_RESET,
   });
 };
 
@@ -175,7 +179,7 @@ export const listUsers = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.put(`/api/users`, config);
+    const { data } = await axios.get(`/api/users`, config);
     dispatch({
       type: USER_LIST_SUCCESS,
       payload: data,
