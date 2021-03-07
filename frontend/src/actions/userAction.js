@@ -246,6 +246,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(`/api/users/${user._id}`, user, config);
+    
     dispatch({
       type: USER_UPDATE_SUCCESS,
       payload: data,

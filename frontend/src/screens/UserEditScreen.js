@@ -18,6 +18,9 @@ const UserEditScreen = ({ match, history }) => {
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
+  const userUpdate = useSelector((state) => state.userUpdate);
+  const { loading:loadingUpdate, error:errorUpdate, success:successUpdate } = userUpdate;
+  
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: USER_UPDATE_RESET });
@@ -31,7 +34,7 @@ const UserEditScreen = ({ match, history }) => {
         setIsAdmin(user.isAdmin);
       }
     }
-  }, [user, dispatch, history, userId, successUpdate]);
+  }, [user, dispatch, history, userId,user, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -45,6 +48,7 @@ const UserEditScreen = ({ match, history }) => {
       </Link>
       <FormContainer>
         <h1>Edit User</h1>
+        {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
           <Loader />
