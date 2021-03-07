@@ -125,7 +125,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id).select('-password');
   if (user) {
-    res.send(user);
+    res.json(user);
   } else {
     res.send(404);
     throw new Error('User Not Found');
@@ -134,7 +134,7 @@ const getUserById = asyncHandler(async (req, res) => {
 
 //@desc Update User
 //@route PUT /api/users/:id
-// @access private
+// @access private/Admin
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
   if (user) {
