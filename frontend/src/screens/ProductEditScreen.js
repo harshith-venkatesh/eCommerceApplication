@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listProductDetails } from '../actions/productAction';
-import { USER_UPDATE_RESET } from '../constants/userConstants';
+import { listProductDetails,updateProduct } from '../actions/productAction';
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
@@ -17,18 +17,20 @@ const ProductEditScreen = ({ match, history }) => {
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
-
-  const [isAdmin, setIsAdmin] = useState(false);
-
+  
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-  // const userUpdate = useSelector((state) => state.userUpdate);
-  // const { loading:loadingUpdate, error:errorUpdate, success:successUpdate } = userUpdate;
+ 
+  const productUpdate = useSelector((state) => state.productUpdate);
+  const { loading:loadingUpdate, error:errorUpdate, success:successUpdate } = productUpdate;
   
   useEffect(() => {
-    
+    if(successUpdate){
+      dispatch({type:PRODUCT_UPDATE_RESET});
+      history.push('/admin/productList');
+    } else{
       if (!product?.name || product?._id !== productId) {
         dispatch(listProductDetails(productId));
       } else {
@@ -39,15 +41,17 @@ const ProductEditScreen = ({ match, history }) => {
         setCategory(product.category);
         setCountInStock(product.countInStock);
         setDescription(product.description);
-        setIsAdmin(product.isAdmin);
+        
       }
+    }
+     
     
-  }, [dispatch, history, productId, product]);
+  }, [dispatch, history, productId, product,successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch(updateUser({ _id: userId, name, email, isAdmin }));
-    //Update Product
+    dispatch(updateProduct({ _id: productId, name, price, brand, category, image, description, countInStock }));
+  
   };
 
   return (
@@ -57,6 +61,8 @@ const ProductEditScreen = ({ match, history }) => {
       </Link>
       <FormContainer>
         <h1>Edit Product</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant='danger'>{errorUpdate} </Message>}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -133,14 +139,14 @@ const ProductEditScreen = ({ match, history }) => {
 
 
 
-            <Form.Group controlId='isAdmin'>
+            {/* <Form.Group controlId='isAdmin'>
               <Form.Check
                 type='checkbox'
                 label='is Admin'
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               ></Form.Check>
-            </Form.Group>
+            </Form.Group> */}
             <Button type='submit' variant='primary'>
               Update
             </Button>
