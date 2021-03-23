@@ -5,11 +5,14 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { listProducts, deleteProduct, createProduct} from '../actions/productAction';
 import { LinkContainer } from 'react-router-bootstrap';
-import {PRODUCT_CREATE_RESET} from '../constants/productConstants'
+import {PRODUCT_CREATE_RESET} from '../constants/productConstants';
+import Paginate from '../components/Paginate'
 const ProductListScreen = ({ history,match }) => {
+  const pageNumber = match.params.pageNumber || 1;
+  const keyword = match.params.keyword;
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products ,page, pages} = productList;
 
   const productDelete = useSelector((state) => state.productDelete);
   const { loading:loadingDelete, error:errorDelete, success:successDelete } = productDelete;
@@ -32,9 +35,9 @@ const ProductListScreen = ({ history,match }) => {
     if(successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts());
+      dispatch(listProducts('',pageNumber));
     }
-  }, [dispatch, history, userInfo,successDelete,successCreate,createdProduct]);
+  }, [dispatch, history, userInfo,successDelete,successCreate,createdProduct,pageNumber]);
   const editProductHandler = (id) =>{}
   const deleteHandler = (id) => {
     if (window.confirm('Are you Sure?')) {
@@ -65,6 +68,7 @@ const ProductListScreen = ({ history,match }) => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
+        <>
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
@@ -104,6 +108,8 @@ const ProductListScreen = ({ history,match }) => {
             ))}
           </tbody>
         </Table>
+        <Paginate pages={pages} page={page} isAdmin={true}/>
+        </>
       )}
     </>
   );
