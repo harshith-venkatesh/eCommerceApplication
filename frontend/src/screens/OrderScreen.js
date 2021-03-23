@@ -62,7 +62,7 @@ const OrderScreen = ({ match, history }) => {
     } else {
       setSdkReady(true);
     }
-  }, [orderId, order, sdkReady, dispatch, successPay, successDeliver]);
+  }, [orderId, order, sdkReady, dispatch, successPay, successDeliver,userInfo,history]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
@@ -72,7 +72,7 @@ const OrderScreen = ({ match, history }) => {
   const deliverHandler = () => {
     dispatch(deliverOrder(order));
   }
-  console.log(order);
+  
   const deliverCheckByAdmin = userInfo?.isAdmin && !order?.isPaid && !order?.isDelivered;
   
 
