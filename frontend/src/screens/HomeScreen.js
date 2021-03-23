@@ -15,7 +15,7 @@ const HomeScreen = ({match}) => {
   const { loading, error, products } = productList;
   useEffect(() => {
     dispatch(listProducts(keyword));
-  }, [dispatch]);
+  }, [dispatch,keyword]);
   // const loading = false;
   // const error = false;
   // const products = [];
