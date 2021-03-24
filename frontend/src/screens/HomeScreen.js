@@ -4,9 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productAction';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import Meta from '../components/Meta'
 import Paginate from '../components/Paginate'
 import Product from '../components/Product';
-import ProductCarousal from '../components/ProductCarousal'
+import ProductCarousal from '../components/ProductCarousal';
+import {Link} from 'react-router-dom';
+
 
 const HomeScreen = ({match}) => {
 
@@ -24,7 +27,8 @@ const HomeScreen = ({match}) => {
   // const products = [];
   return (
     <>
-    {!keyword && <ProductCarousal /> }
+    <Meta />
+    {!keyword ? <ProductCarousal /> : <Link to='/' className='btn btn-light'>Go Back</Link> }
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
