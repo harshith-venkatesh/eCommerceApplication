@@ -64,13 +64,13 @@ const ProductScreen = ({ history, match }) => {
         <>
         <Meta title={product.name} />
         <Row>
-          <Col md={6}>
+          <Col md={5}>
             <Image src={product.image} alt={product.name} fluid />
           </Col>
-          <Col md={3} style={{ overflowWrap: 'anywhere' }}>
+          <Col md={4} style={{ overflowWrap: 'anywhere' }}>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h3>{product.name} </h3>
+                <div className="product-title">{product.name} </div>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Rating
