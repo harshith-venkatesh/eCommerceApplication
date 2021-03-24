@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <Container className="text-center py-3">
-        CopyRight &copy; Tech Kart{" "}
+        CopyRight &copy; Tech Cart{" "}
       </Container>
     </footer>
   );
