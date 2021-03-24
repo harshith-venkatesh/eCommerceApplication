@@ -139,15 +139,16 @@ const ProductScreen = ({ history, match }) => {
             </Card>
           </Col>
         </Row>
+        <br />
         <Row>
           <Col md={6}>
-            <h2>Reviews</h2>
+            <h5>Reviews</h5>
             {product?.reviews.length === 0 && <Message>No Reviews Found</Message>}
             <ListGroup variant="flush">
               <ListGroup.Item>
                 {userInfo ? (
                   <>
-                  <h2>Write a Customer Review</h2>
+                  <h5>Write a Customer Review</h5>
                   {errorProductReview && <Message variant='danger'>{errorProductReview}</Message>}
                   <Form onSubmit={submitHandler}>
                     <Form.Group controlId="rating">

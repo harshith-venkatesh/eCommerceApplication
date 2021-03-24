@@ -20,6 +20,25 @@ h1 {
   padding: 0.5rem 0;
 }
 
+.product-title {
+
+  font-size: 0.8rem;
+  font-weight: bold;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
+  hyphens: none;
+}
+
+.product-title a {
+  text-decoration: none;
+  color: white;
+}
+
+.product-title:hover {
+  color: rgb(69, 117, 69);
+}
 
 /* carousel */
 .carousel-item-next,
@@ -41,10 +60,17 @@ h1 {
 .carousel img {
   height: 300px;
   padding: 30px;
-  margin: 40px;
+  margin: 40px auto;
   border-radius: 50%;
+
 }
 
 .carousel a {
   margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .carousel-caption h2 {
+    font-size: 2.5vw;
+  }
 }
