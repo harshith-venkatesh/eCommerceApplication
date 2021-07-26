@@ -21,14 +21,11 @@ h1 {
 }
 
 .product-title {
-
   font-size: 1rem;
+  padding: 0.2rem 0.3rem;
   font-weight: bold;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: normal;
-  line-break: strict;
-  hyphens: none;
+  text-decoration: none;
+  word-wrap:break-word;
 }
 
 .product-title a {
@@ -38,6 +35,7 @@ h1 {
 
 .product-title:hover {
   color: rgb(69, 117, 69);
+  text-decoration: none;
 }
 
 /* carousel */
