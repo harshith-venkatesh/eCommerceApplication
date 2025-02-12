@@ -8,8 +8,8 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 
 const LoginScreen = ({ location, history }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('demoUser@techkart.com');
+  const [password, setPassword] = useState('demoUser');
 
   const dispatch = useDispatch();
 
@@ -40,6 +40,7 @@ const LoginScreen = ({ location, history }) => {
             type='email'
             placeholder='Enter Email'
             value={email}
+            
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -49,6 +50,7 @@ const LoginScreen = ({ location, history }) => {
             type='password'
             placeholder='Enter Password'
             value={password}
+           
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
